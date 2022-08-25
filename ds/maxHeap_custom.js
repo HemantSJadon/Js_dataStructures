@@ -39,6 +39,14 @@ const maxHeap = function(){
     this.print = function(){
         return heap;
     }
+    //sort():  Heap sort 
+    this.sort = function(){
+        var sorted = new Array();
+        while(heap.length > 1){
+            sorted.push(this.remove());
+        }
+        return sorted;
+    }
 }
 
 const collection = new maxHeap();
@@ -52,9 +60,11 @@ collection.insert(21);
 
 console.log(collection.print());
 
-console.log(collection.remove());
-console.log(collection.remove());
-console.log(collection.remove());
-console.log(collection.remove());
-console.log(collection.remove());
-console.log(collection.print());
+// console.log(collection.remove());
+// console.log(collection.remove());
+// console.log(collection.remove());
+// console.log(collection.remove());
+// console.log(collection.remove());
+// console.log(collection.print());
+
+console.log(collection.sort());

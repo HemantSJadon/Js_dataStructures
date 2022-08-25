@@ -64,6 +64,14 @@ const minHeap = function(){
     this.print = function(){
         return heap;
     }
+    //sort(): return a sorted array (heap sort)
+    this.sort = function(){
+        var sorted = new Array();
+        while(heap.length > 1){
+            sorted.push(this.remove());
+        }
+        return sorted;
+    }
 
 }
 
@@ -78,21 +86,22 @@ collection.insert(2);
 
 console.log(collection.print());
 
-console.log(collection.remove());
-console.log(collection.print());
+// console.log(collection.remove());
+// console.log(collection.print());
 
-console.log(collection.remove());
-console.log(collection.print());
+// console.log(collection.remove());
+// console.log(collection.print());
 
-console.log(collection.remove());
-console.log(collection.print());
+// console.log(collection.remove());
+// console.log(collection.print());
 
-console.log(collection.remove());
-console.log(collection.print());
+// console.log(collection.remove());
+// console.log(collection.print());
 
-console.log(collection.remove());
-console.log(collection.print());
+// console.log(collection.remove());
+// console.log(collection.print());
 
 
-console.log(collection.remove());
-console.log(collection.print());
+// console.log(collection.remove());
+// console.log(collection.print());
+console.log(collection.sort());
