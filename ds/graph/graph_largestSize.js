@@ -32,12 +32,11 @@ const givenGraph =
     8: []
 } // => 3
 
+// its actually a traversal: Time: O(e), Space: O(n) linear space
 const largestComponent = (graph) => {
-    const allNodes = [];
-    Object.entries(graph).map(n => allNodes.push(n[0]));
     const visited = new Set();
     let largestSize = -1;
-    for(let node of allNodes){
+    for(let node in graph){
         if(!visited.has(node)){
             const currSize = getComponentSize(graph, node, visited);
             largestSize = Math.max(currSize, largestSize);
