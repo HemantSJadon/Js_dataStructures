@@ -3,6 +3,10 @@
 //Takes input as a grid (r = number of rows, c = number of cols)
 
 //Common gathca: storing reference type (non-primitive data type) , in that case it checks for reference equality
+
+//Solution: iterative approach to leap through nodes of grids, recursive to traverse dfs to explore a node
+
+//Time complexity: since the grid needs to be traversed only once : Linear, O(r*C), space: O(r*c) to store during dfs, visited info
 const grid = 
 /* [
     ['W', 'L', 'W', 'W', 'W'],
