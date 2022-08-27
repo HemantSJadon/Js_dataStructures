@@ -31,16 +31,14 @@ const edges =
 const shortestPath = function(edges, nodeA, nodeB){
     const graph = generateUndirectedGraph(edges);
     const queue = [[nodeA,0]];
-    const visited = new Set();
+    const visited = new Set(); // for cycle prevention
     while(queue.length > 0){
-        const current = queue.shift();
-        if(current[0] === nodeB){
-            return current[1];
-        }
-        visited.add(current[0]);
-        graph[current[0]].forEach(neighbor => {
+        const [node, distance] = queue.shift();
+        if(node === nodeB) return distance;
+        visited.add(node);
+        graph[node].forEach(neighbor => {
             if(!visited.has(neighbor)){
-                queue.push([neighbor, current[1]+1]);
+                queue.push([neighbor, distance+1]);
             }
         }); 
     }
