@@ -4,14 +4,7 @@ where each node has at most 2 children nodes
 left child is less than the value of parent
 right child is greater than the value of parent
 */
-
-class Node{
-    constructor(data, left = null, right = null){
-        this.data = data;
-        this.left = left;
-        this.right = right;
-    }
-}
+import {Node} from './bt_nodeDefintion.js';
 
 class BST{
     //constructor
@@ -28,7 +21,7 @@ class BST{
         }
         else {
             const searchTree = function(node){
-                if(data < node.data){
+                if(data < node.val){
                     if(node.left === null){
                         node.left = new Node(data);
                         return;
@@ -37,7 +30,7 @@ class BST{
                         return searchTree(node.left);
                     }
                 }
-                else if(data > node.data){
+                else if(data > node.val){
                     if(node.right === null){
                         node.right = new Node(data);
                         return;
@@ -64,7 +57,7 @@ class BST{
             }
             break;
         }
-        return current.data;
+        return current.val;
     }
     //findMax(): find and return the maximum value in the tree
     findMax(){
@@ -76,16 +69,16 @@ class BST{
             }
             break;
         }
-        return current.data;
+        return current.val;
     }
     //find(data): find and return the subtree with data node as the root
     find(data){
         let current = this.root;
         while(current || current !== null){
-            if(current.data === data){
+            if(current.val === data){
                 return current;
             }
-            else if( data < current.data){
+            else if( data < current.val){
                 current = current.left;
             }
             else{
@@ -98,10 +91,10 @@ class BST{
     isPresent(data){
         let current = this.root;
         while(current || current !== null){
-            if(current.data === data){
+            if(current.val === data){
                 return true;
             }
-            else if( data < current.data){
+            else if( data < current.val){
                 current = current.left;
             }
             else {
@@ -114,7 +107,7 @@ class BST{
     remove(data){
         const removeNode = function(node, data){
            if(node){
-                if(data === node.data){
+                if(data === node.val){
                     if(node.left === null && node.right === null){
                         return null;
                     }
@@ -129,12 +122,12 @@ class BST{
                         while(tempNode.left != null){
                             tempNode = tempNode.left;
                         }
-                        node.data = tempNode.data;
-                        node.right = removeNode(node.right, tempNode.data);
+                        node.val = tempNode.val;
+                        node.right = removeNode(node.right, tempNode.val);
                         return node;
                     }
                 }
-                else if( data < node.data){
+                else if( data < node.val){
                     node.left = removeNode(node.left, data);
                     return node;
                 }
@@ -185,7 +178,7 @@ class BST{
     inOrder(node = this.root, traversalArray = []){
         if(node !== null){
             this.inOrder(node.left, traversalArray);
-            traversalArray.push(node.data);
+            traversalArray.push(node.val);
             this.inOrder(node.right, traversalArray);
             return traversalArray;
         }
@@ -193,7 +186,7 @@ class BST{
     //preorder() : pre order traversal of the tree
     preOrder(node = this.root,traversalArray = []){
         if(node !== null){
-            traversalArray.push(node.data);
+            traversalArray.push(node.val);
             this.preOrder(node.left);
             this.preOrder(node.right);
             return traversalArray;
@@ -204,7 +197,7 @@ class BST{
         if(node !== null){
             this.postOrder(node.left);
             this.postOrder(node.right);
-            traversalArray.push(node.data);
+            traversalArray.push(node.val);
             return traversalArray;
         }
     }
@@ -215,7 +208,7 @@ class BST{
             queue.push(this.root);
             while(queue.length > 0){
                 const visited = queue.shift();
-                traversalArray.push(visited.data);
+                traversalArray.push(visited.val);
                 visited.left !== null ? queue.push(visited.left) : (1===1);
                 visited.right !== null ? queue.push(visited.right) : (1 === 1 );
             }

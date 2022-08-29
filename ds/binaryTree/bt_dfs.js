@@ -1,12 +1,5 @@
 //Problem: https://structy.net/problems/depth-first-values
-
-class Node {
-    constructor(val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
-    }
-}
+import {Node} from './bt_nodeDefintion.js';
 
 const test1 = () => {
     const a = new Node('a');
@@ -68,8 +61,8 @@ const depthFirstValues_iterative = function (root) {
             const current = stack.pop();
             const { val, left, right } = current;
             traversed.push(val);
-            if (right !== null) stack.push(right);
-            if (left !== null) stack.push(left);
+            if (right) stack.push(right);
+            if (left) stack.push(left);
         }
     }
     return traversed;
@@ -83,6 +76,7 @@ const depthFirstValue_recursive = function(node, traversed = []){
     depthFirstValue_recursive(right, traversed);
     return traversed;
 }
+
 
 test1();
 test2();
