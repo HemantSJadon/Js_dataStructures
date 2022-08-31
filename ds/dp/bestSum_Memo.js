@@ -10,14 +10,14 @@ any one of the shortest.
 */
 
 const test1 = () => {
-    const targetSum = 501;//7;//;// 56, 51, 55, 22, 1
+    const targetSum = 7;//7;//;// 56, 51, 55, 22, 1
     const numbers = [3,4,1];
     console.log(`getting the shortest combination of numbers that add up to ${targetSum} from below collection...
     ${numbers}`);
 
-    // console.time("bestSum");
-    // console.log("here is the best sum:", bestSum(targetSum, numbers));
-    // console.timeEnd("bestSum");
+    console.time("bestSum");
+    console.log("here is the best sum:", bestSum(targetSum, numbers));
+    console.timeEnd("bestSum");
 
 
     console.time("bestSum_optimised");
@@ -37,8 +37,8 @@ const bestSum = function (targetSum, numbers) {
     for (let num of numbers) {
         const bestSumRemainder = bestSum(targetSum - num, numbers);
         if (bestSumRemainder) {
-            bestSumRemainder.push(num);
-            shortest = !shortest || shortest.length > bestSumRemainder.length ? bestSumRemainder : shortest;
+            const currentCombo =  [...bestSumRemainder, num];
+            shortest = !shortest || shortest.length > currentCombo.length ? currentCombo : shortest;
         }
     }
     return shortest;
@@ -53,18 +53,16 @@ const bestSum_optimised = function(targetSum, numbers, alreadyCalculated = new M
     if(alreadyCalculated.has(targetSum)) return alreadyCalculated.get(targetSum);
     if (targetSum === 0) return [];
     if (targetSum < 0) return null;
-    // let shortest = null;
+    let shortest = null;
     for (let num of numbers) {
-        const bestSumRemainder = bestSum_optimised(targetSum - num, numbers,alreadyCalculated);
+        const bestSumRemainder = bestSum(targetSum - num, numbers);
         if (bestSumRemainder) {
-            const currentCombo = [...bestSumRemainder, num]; // bestSumRemainder tracks the reference to object in map, .push() changes the object in the map, so used destructuring 
-            if(!alreadyCalculated.has(targetSum) || alreadyCalculated.get(targetSum).length > currentCombo.length){
-                alreadyCalculated.set(targetSum, currentCombo)
-            }
+            const currentCombo =  [...bestSumRemainder, num];
+            shortest = !shortest || shortest.length > currentCombo.length ? currentCombo : shortest;
         }
     }
-    // alreadyCalculated.set(targetSum, [...shortest]);
-    return alreadyCalculated.get(targetSum);
+    alreadyCalculated.set(targetSum, shortest);
+    return shortest;
 }
 
 test1();
