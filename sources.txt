@@ -4,3 +4,4 @@ data structures and algos for beginners in js : https://youtu.be/t2CEgPsws3U
 
 for binary tree algos = https://youtu.be/fAAZixBzIAI
 
+for dynamic programming = https://www.youtube.com/watch?v=oBt53YbR9Kk&t=15930s&ab_channel=freeCodeCamp.org

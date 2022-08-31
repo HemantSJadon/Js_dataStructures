@@ -22,7 +22,7 @@ const test1 = () => {
     //  / \      \
     // 4   -2     1
 
-    console.log(maxPath_dfs_iterative(a)); // -> 18
+    console.log(maxPathSum_dfs_recursive(a)); // -> 18
 }
 const test2 = () => {
     const a = new Node(5);
@@ -48,7 +48,7 @@ const test2 = () => {
     //      / \
     //     1  3
 
-    console.log(maxPath_dfs_iterative(a)); // -> 59
+    console.log(maxPathSum_dfs_recursive(a)); // -> 59
 }
 
 const test3 = () => {
@@ -77,25 +77,22 @@ const test3 = () => {
     //     /       \
     //    -1       -2
 
-    console.log(maxPath_dfs_iterative(a)); // -> -8
+    console.log(maxPathSum_dfs_recursive(a)); // -> -8
 }
 
 // Every node is traversed only once, linear complexity
 //time: O(n), space: O(n)
 const maxPathSum_dfs_recursive = function(node, currentSum = 0){
-    if(!node) return 0;
+    if(!node) return -Infinity;
     const {val, left, right} = node;
     currentSum += val;
     if(!left && !right) return currentSum;
-    else if(!left) return maxPathSum_dfs_recursive(right, currentSum);
-    else if(!right) return maxPathSum_dfs_recursive(left, currentSum);
     return Math.max(maxPathSum_dfs_recursive(left, currentSum), maxPathSum_dfs_recursive(right, currentSum));
 };
 
 const maxPath_dfs_iterative = function(root){
     if(!root) return 0;
     let maxSum = -Infinity;
-    // let currentSum = 0;
     const stack = [[root,0]];
     while(stack.length > 0){
         let [current, currentSum] = stack.pop();

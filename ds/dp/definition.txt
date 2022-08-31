@@ -1,0 +1,21 @@
+Dynamic programming is used when a large problem can be broken down into 
+smaller problems of same nature, where we have an overlapping between 2. 
+
+Draw the recursive nature of the problem and identify patterns where 
+efforts are duplicated.
+
+Alvin's memoisation recipe:
+
+Make it work:
+1. visualise the problem as a tree
+2. Implement the tree using recursion
+3. test it 
+4. estimate time and space complexity
+
+Make it efficient:
+1. add a memo map
+2. add base case to lookup the value in map
+3. pass the memo object in recursive calls
+4. store return value in map
+5. test it
+6. estimate time and space complexity
