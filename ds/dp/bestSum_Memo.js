@@ -28,7 +28,7 @@ const test1 = () => {
 //n = target sum, m = length of numbers array
 //worst case: when each element is 1 or something that does not end in a valid combo
 // complete tree traversal: exponential
-//time: O(n^m) level ^ branches
+//time: O(n^m *m) (level ^ branches) * destructuring 
 //space: call stack O(n)
 const bestSum = function (targetSum, numbers) {
     if (targetSum === 0) return [];

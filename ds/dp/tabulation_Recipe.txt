@@ -1,0 +1,11 @@
+Tabulation recipe:
+
+1. Visualise the problem as a table (1D : array, 2D: jagged array)
+2. Size the table based on the inputs (remember off by one scenerio) ( single input: 1D, double inputs: 2D) 
+3. Initialise to the default values
+4. seed the trivial answer (base case ) into the table
+5. Iterate through the table
+6. fill further positions based on the current positions
+(what are the next options to move)
+
+Tabulation gives the most effective solution out of the box

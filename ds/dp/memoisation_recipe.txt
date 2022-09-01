@@ -19,3 +19,8 @@ Make it efficient:
 4. store return value in map
 5. test it
 6. estimate time and space complexity
+
+
+canSum : can we do it? yes/no : Decision problem
+howSum: how do we do it? : Combinatoric problem
+bestSum: the 'best' way to do it? : Optimisation problem
